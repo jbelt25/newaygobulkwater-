@@ -156,9 +156,13 @@
             border-radius: 50px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.25);
             z-index: 9999;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .admin-bar.hidden {
+            display: none !important;
         }
         .admin-bar button {
             background: #28a745;
@@ -168,10 +172,30 @@
             border-radius: 20px;
             font-weight: bold;
             cursor: pointer;
+            font-size: 0.85rem;
         }
         .admin-bar button.reset-btn {
             background: #dc3545;
         }
+        .admin-bar button.hide-btn {
+            background: #6c757d;
+        }
+        
+        /* Secret restore trigger in bottom right corner */
+        .restore-trigger {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 32px;
+            height: 32px;
+            background: transparent;
+            z-index: 9998;
+            cursor: pointer;
+        }
+        .restore-trigger:hover {
+            background: rgba(0, 86, 179, 0.15);
+        }
+
         body.edit-mode [contenteditable="true"] {
             outline: 2px dashed #007bff;
             background-color: rgba(0, 123, 255, 0.05);
@@ -184,174 +208,5 @@
 </head>
 <body>
 
-    <!-- Floating Live Editor Controls -->
-    <div class="admin-bar">
-        <span id="editorStatus">View Mode</span>
-        <button id="toggleEditBtn" onclick="toggleEditMode()">Enable Edit Mode</button>
-        <button class="reset-btn" onclick="resetToDefaults()">Reset Defaults</button>
-    </div>
-
-    <!-- Header -->
-    <header class="header">
-        <h1 class="editable" data-key="header_h1">NEWAYGO BULK WATER COMPANY</h1>
-        <h2 class="editable" data-key="header_h2">SECURE HIGH-VOLUME ACCESS: WHITE CLOUD BULK FILL STATION</h2>
-        <p class="editable" data-key="header_sub">EXCLUSIVE PRE-LAUNCH RATES | EGLE APPROVED | PROFESSIONAL GRADE</p>
-    </header>
-
-    <!-- Hero Image Area -->
-    <section class="hero-section">
-        <img id="heroImg" src="bulk_water_pre-sale_flyer-tanker.png" alt="Tanker truck filling at 300+ GPM flow rate station" class="hero-image">
-        
-        <div class="hero-edit-controls">
-            <input type="file" id="heroFileInput" accept="image/*" style="display:none;" onchange="handleHeroUpload(event)">
-            <button onclick="document.getElementById('heroFileInput').click()">Upload New Photo</button>
-            <button onclick="promptHeroUrl()">Enter Image URL</button>
-        </div>
-    </section>
-
-    <main class="container">
-        
-        <!-- Value Propositions Grid -->
-        <section class="grid-features">
-            <div class="feature-card">
-                <h3 class="editable" data-key="feat1_h3">Stop Waiting. Start Hauling.</h3>
-                <p class="editable" data-key="feat1_p1"><strong>Flow Rate:</strong> 300+ GPM</p>
-                <p class="editable" data-key="feat1_p2" style="margin-top: 10px;"><strong>Priority "Fast-Pass" Access:</strong> Dedicated PIN for peak season.</p>
-            </div>
-            
-            <div class="feature-card">
-                <img src="stopwatch.png" alt="Stopwatch Icon">
-                <h3 class="editable" data-key="feat2_h3">CUT FILL TIMES BY 60%</h3>
-                <p class="editable" data-key="feat2_p1">8,000 gal in &lt; 25 mins.</p>
-            </div>
-            
-            <div class="feature-card">
-                <img src="lock.png" alt="Lock Icon">
-                <h3 class="editable" data-key="feat3_h3">LOCK-IN DISCOUNTED RATE</h3>
-                <p class="editable" data-key="feat3_p1">Rates as low as $6.67/1000 gal.</p>
-            </div>
-            
-            <div class="feature-card">
-                <img src="shield.png" alt="Shield Icon">
-                <h3 class="editable" data-key="feat4_h3">EGLE APPROVED & SCALABLE</h3>
-                <p class="editable" data-key="feat4_p1">880 million gal. annual capacity</p>
-            </div>
-        </section>
-
-        <!-- Pricing Table --> 
-        <section class="pricing-section">
-            <h2 class="editable" data-key="pricing_heading">Exclusive Pre-Launch Tiered Pricing</h2>
-            <table class="pricing-table">
-                <thead>
-                    <tr>
-                        <th class="editable" data-key="th_1">Tier</th>
-                        <th class="editable" data-key="th_2">Buy-In</th>
-                        <th class="editable" data-key="th_3">Volume</th>
-                        <th class="editable" data-key="th_4">Rate per 1k Gal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="editable" data-key="row1_c1"><strong>Commercial</strong></td>
-                        <td class="editable" data-key="row1_c2">$2,500</td>
-                        <td class="editable" data-key="row1_c3">100K Gal.</td>
-                        <td class="editable" data-key="row1_c4">$25.00</td>
-                    </tr>
-                    <tr>
-                        <td class="editable" data-key="row2_c1"><strong>Fleet</strong></td>
-                        <td class="editable" data-key="row2_c2">$10,000</td>
-                        <td class="editable" data-key="row2_c3">500K Gal.</td>
-                        <td class="editable" data-key="row2_c4">$20.00</td>
-                    </tr>
-                    <tr>
-                        <td class="editable" data-key="row3_c1"><strong>Anchor</strong></td>
-                        <td class="editable" data-key="row3_c2">$50,000</td>
-                        <td class="editable" data-key="row3_c3">3M Gal.</td>
-                        <td class="editable" data-key="row3_c4">$16.67</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- Guarantee -->
-        <section class="guarantee">
-            <h2 class="editable" data-key="guarantee_h2">RISK-FREE GUARANTEE</h2>
-            <p class="editable" data-key="guarantee_p1"><strong>YOUR BUY-IN IS PROTECTED.</strong></p>
-            <p class="editable" data-key="guarantee_p2">FULL REFUND IF STATION IS NOT CERTIFIED AND OPERATIONAL BY April 1, 2027</p>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <p class="editable" data-key="footer_p">Centrally Located for Fast Access Across Newaygo, Kent, Mecosta, Muskegon, and Lake Counties</p>
-        </footer>
-
-    </main>
-
-    <script>
-        let isEditMode = false;
-
-        function loadSavedData() {
-            // Restore text elements
-            document.querySelectorAll('.editable').forEach(el => {
-                const key = el.getAttribute('data-key');
-                const saved = localStorage.getItem('nbw_content_' + key);
-                if (saved !== null) {
-                    el.innerHTML = saved;
-                }
-            });
-
-            // Restore hero image
-            const savedImg = localStorage.getItem('nbw_hero_img');
-            if (savedImg) {
-                document.getElementById('heroImg').src = savedImg;
-            }
-        }
-
-        function toggleEditMode() {
-            isEditMode = !isEditMode;
-            const btn = document.getElementById('toggleEditBtn');
-            const status = document.getElementById('editorStatus');
-
-            if (isEditMode) {
-                document.body.classList.add('edit-mode');
-                btn.textContent = 'Save Changes';
-                btn.style.backgroundColor = '#007bff';
-                status.textContent = 'Editing Mode';
-                document.querySelectorAll('.editable').forEach(el => {
-                    el.setAttribute('contenteditable', 'true');
-                });
-            } else {
-                // Save text
-                document.querySelectorAll('.editable').forEach(el => {
-                    el.setAttribute('contenteditable', 'false');
-                    const key = el.getAttribute('data-key');
-                    localStorage.setItem('nbw_content_' + key, el.innerHTML);
-                });
-
-                document.body.classList.remove('edit-mode');
-                btn.textContent = 'Enable Edit Mode';
-                btn.style.backgroundColor = '#28a745';
-                status.textContent = 'View Mode';
-            }
-        }
-
-        function handleHeroUpload(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function(evt) {
-                const base64Img = evt.target.result;
-                document.getElementById('heroImg').src = base64Img;
-                try {
-                    localStorage.setItem('nbw_hero_img', base64Img);
-                } catch (err) {
-                    alert('Image saved to view session, but file is too large for local browser storage. For permanent hosting, enter an external image URL.');
-                }
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function promptHeroUrl() {
-            const url = prompt('Enter public image URL for the hero section:');
-            if (url && url.trim() !== '') {
+    <!-- Secret hot spot to bring back editor -->
+    <div class="restore-trigger" title="Click or Press Ctrl+Shift+E to restore toolbar" onclick="unhideToolbar()"></div>
