@@ -52,20 +52,24 @@
             bottom: 15px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(0, 0, 0, 0.85);
             padding: 10px 16px;
             border-radius: 8px;
             gap: 10px;
             align-items: center;
-            z-index: 10;
+            z-index: 100;
         }
         .hero-edit-controls button {
             background: #ffc107;
             border: none;
-            padding: 6px 14px;
+            padding: 8px 14px;
             font-weight: bold;
             border-radius: 4px;
             cursor: pointer;
+            color: #000;
+        }
+        .hero-edit-controls button:hover {
+            background: #e0a800;
         }
         .container { 
             max-width: 1000px; 
@@ -145,68 +149,46 @@
             color: #444; 
         }
 
-        /* Editing Toolbar Styles */
+        /* Fixed Toolbar Container */
         .admin-bar {
             position: fixed;
             bottom: 20px;
             right: 20px;
             background: #002d62;
             color: white;
-            padding: 10px 18px;
+            padding: 8px 16px;
             border-radius: 50px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-            z-index: 9999;
-            transition: opacity 0.2s ease, transform 0.2s ease;
+            gap: 8px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+            z-index: 10000;
+            user-select: none;
         }
         .admin-bar.hidden {
             display: none !important;
         }
+        .admin-bar span {
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-right: 4px;
+        }
         .admin-bar button {
-            background: #28a745;
             color: white;
             border: none;
-            padding: 6px 14px;
+            padding: 7px 14px;
             border-radius: 20px;
             font-weight: bold;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            transition: background 0.2s;
         }
-        .admin-bar button.reset-btn {
-            background: #dc3545;
-        }
-        .admin-bar button.hide-btn {
-            background: #6c757d;
-        }
-        
-        /* Secret restore trigger in bottom right corner */
+        .btn-toggle-edit { background: #28a745; }
+        .btn-toggle-edit.active { background: #dc3545; }
+        .btn-reset { background: #6c757d; }
+        .btn-hide { background: #17a2b8; }
+
+        /* Secret restore trigger in corner */
         .restore-trigger {
             position: fixed;
             bottom: 0;
-            right: 0;
-            width: 32px;
-            height: 32px;
-            background: transparent;
-            z-index: 9998;
-            cursor: pointer;
-        }
-        .restore-trigger:hover {
-            background: rgba(0, 86, 179, 0.15);
-        }
-
-        body.edit-mode [contenteditable="true"] {
-            outline: 2px dashed #007bff;
-            background-color: rgba(0, 123, 255, 0.05);
-            cursor: text;
-        }
-        body.edit-mode .hero-edit-controls {
-            display: flex;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Secret hot spot to bring back editor -->
-    <div class="restore-trigger" title="Click or Press Ctrl+Shift+E to restore toolbar" onclick="unhideToolbar()"></div>
