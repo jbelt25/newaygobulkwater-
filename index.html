@@ -149,20 +149,20 @@
             color: #444; 
         }
 
-        /* Fixed Toolbar Container */
+        /* Editing Toolbar Styles */
         .admin-bar {
             position: fixed;
             bottom: 20px;
             right: 20px;
             background: #002d62;
             color: #ffffff;
-            padding: 8px 16px;
+            padding: 10px 18px;
             border-radius: 50px;
             display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.35);
-            z-index: 100000;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+            z-index: 2147483647;
             user-select: none;
         }
         .admin-bar.hidden {
@@ -171,7 +171,7 @@
         .admin-bar span {
             font-size: 0.85rem;
             font-weight: bold;
-            margin-right: 2px;
+            margin-right: 4px;
         }
         .admin-bar button {
             color: #ffffff;
@@ -196,23 +196,23 @@
             background: #17a2b8 !important; 
         }
 
-        /* Secret restore trigger in bottom right corner */
+        /* Discrete hotspot to bring toolbar back */
         .restore-trigger {
             position: fixed;
             bottom: 0;
             right: 0;
-            width: 40px;
-            height: 40px;
-            background: rgba(0, 86, 179, 0.1);
-            z-index: 99999;
+            width: 44px;
+            height: 44px;
+            background: rgba(0, 86, 179, 0.15);
+            z-index: 2147483646;
             cursor: pointer;
-            border-radius: 8px 0 0 0;
+            border-radius: 12px 0 0 0;
         }
         .restore-trigger:hover {
-            background: rgba(0, 86, 179, 0.45);
+            background: rgba(0, 86, 179, 0.5);
         }
 
-        /* Visual cue for editable items when edit mode is active */
+        /* Edit Mode Highlights */
         body.edit-mode .editable {
             outline: 2px dashed #007bff !important;
             background-color: rgba(0, 123, 255, 0.08) !important;
@@ -225,7 +225,7 @@
 </head>
 <body>
 
-    <!-- Discrete restore hotspot (Click to restore hidden toolbar) -->
+    <!-- Discrete restore hotspot (Click to restore hidden controls) -->
     <div class="restore-trigger" id="restoreTrigger" title="Click or Press Ctrl+Shift+E to restore toolbar" onclick="unhideToolbarUI()"></div>
 
     <!-- Floating Live Editor Controls -->
@@ -300,180 +300,4 @@
                         <td class="editable" data-key="row1_c1"><strong>Commercial</strong></td>
                         <td class="editable" data-key="row1_c2">$2,500</td>
                         <td class="editable" data-key="row1_c3">100K Gal.</td>
-                        <td class="editable" data-key="row1_c4">$25.00</td>
-                    </tr>
-                    <tr>
-                        <td class="editable" data-key="row2_c1"><strong>Fleet</strong></td>
-                        <td class="editable" data-key="row2_c2">$10,000</td>
-                        <td class="editable" data-key="row2_c3">500K Gal.</td>
-                        <td class="editable" data-key="row2_c4">$20.00</td>
-                    </tr>
-                    <tr>
-                        <td class="editable" data-key="row3_c1"><strong>Anchor</strong></td>
-                        <td class="editable" data-key="row3_c2">$50,000</td>
-                        <td class="editable" data-key="row3_c3">3M Gal.</td>
-                        <td class="editable" data-key="row3_c4">$16.67</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- Guarantee -->
-        <section class="guarantee">
-            <h2 class="editable" data-key="guarantee_h2">RISK-FREE GUARANTEE</h2>
-            <p class="editable" data-key="guarantee_p1"><strong>YOUR BUY-IN IS PROTECTED.</strong></p>
-            <p class="editable" data-key="guarantee_p2">FULL REFUND IF STATION IS NOT CERTIFIED AND OPERATIONAL BY April 1, 2027</p>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <p class="editable" data-key="footer_p">Centrally Located for Fast Access Across Newaygo, Kent, Mecosta, Muskegon, and Lake Counties</p>
-        </footer>
-
-    </main>
-
-    <script>
-        // Global variables for bulletproof direct execution
-        var isEditingActive = false;
-
-        function storageSafeSet(k, val) {
-            try {
-                localStorage.setItem(k, val);
-            } catch (err) {
-                console.warn('LocalStorage save failed:', err);
-            }
-        }
-
-        function storageSafeGet(k) {
-            try {
-                return localStorage.getItem(k);
-            } catch (err) {
-                return null;
-            }
-        }
-
-        function toggleEditModeUI() {
-            isEditingActive = !isEditingActive;
-            var btn = document.getElementById('toggleEditBtn');
-            var status = document.getElementById('editorStatus');
-            var editables = document.querySelectorAll('.editable');
-
-            if (isEditingActive) {
-                document.body.classList.add('edit-mode');
-                btn.textContent = 'Save Changes';
-                btn.classList.add('active');
-                status.textContent = 'Editing';
-
-                for (var i = 0; i < editables.length; i++) {
-                    editables[i].contentEditable = 'true';
-                }
-            } else {
-                for (var j = 0; j < editables.length; j++) {
-                    editables[j].contentEditable = 'false';
-                    var key = editables[j].getAttribute('data-key');
-                    if (key) {
-                        storageSafeSet('nbw_content_' + key, editables[j].innerHTML);
-                    }
-                }
-
-                document.body.classList.remove('edit-mode');
-                btn.textContent = 'Enable Editing';
-                btn.classList.remove('active');
-                status.textContent = 'Viewing';
-            }
-        }
-
-        function hideToolbarUI() {
-            if (isEditingActive) {
-                toggleEditModeUI(); // auto-save before hiding
-            }
-            document.getElementById('adminBar').classList.add('hidden');
-            storageSafeSet('nbw_toolbar_hidden', 'true');
-        }
-
-        function unhideToolbarUI() {
-            document.getElementById('adminBar').classList.remove('hidden');
-            storageSafeSet('nbw_toolbar_hidden', 'false');
-        }
-
-        function resetDefaultsUI() {
-            if (confirm('Reset all edits and restore original template text and photo?')) {
-                try {
-                    for (var key in localStorage) {
-                        if (key.indexOf('nbw_') === 0) {
-                            localStorage.removeItem(key);
-                        }
-                    }
-                } catch (e) {}
-                window.location.reload();
-            }
-        }
-
-        function handleHeroFileUpload(e) {
-            var file = e.target.files && e.target.files[0];
-            if (!file) return;
-
-            var reader = new FileReader();
-            reader.onload = function(evt) {
-                var res = evt.target.result;
-                document.getElementById('heroImg').src = res;
-                storageSafeSet('nbw_hero_img', res);
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function promptHeroUrlInput() {
-            var url = prompt('Enter a valid image URL:');
-            if (url && url.trim()) {
-                document.getElementById('heroImg').src = url.trim();
-                storageSafeSet('nbw_hero_img', url.trim());
-            }
-        }
-
-        function initializeSiteData() {
-            // Restore text fields
-            var editables = document.querySelectorAll('.editable');
-            for (var i = 0; i < editables.length; i++) {
-                var key = editables[i].getAttribute('data-key');
-                var val = storageSafeGet('nbw_content_' + key);
-                if (val !== null) {
-                    editables[i].innerHTML = val;
-                }
-            }
-
-            // Restore hero photo
-            var savedPhoto = storageSafeGet('nbw_hero_img');
-            if (savedPhoto) {
-                var img = document.getElementById('heroImg');
-                if (img) img.src = savedPhoto;
-            }
-
-            // Restore toolbar state
-            if (storageSafeGet('nbw_toolbar_hidden') === 'true') {
-                var bar = document.getElementById('adminBar');
-                if (bar) bar.classList.add('hidden');
-            }
-        }
-
-        // Global hotkey: Ctrl + Shift + E or Cmd + Shift + E
-        window.addEventListener('keydown', function(e) {
-            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'e') {
-                e.preventDefault();
-                var bar = document.getElementById('adminBar');
-                if (bar.classList.contains('hidden')) {
-                    unhideToolbarUI();
-                } else {
-                    hideToolbarUI();
-                }
-            }
-        });
-
-        // Initialize immediately or on load
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initializeSiteData);
-        } else {
-            initializeSiteData();
-        }
-    </script>
-</body>
-</html>
+                        <td class="editable" data-key="row1_c4">$25.
