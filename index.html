@@ -155,14 +155,14 @@
             bottom: 20px;
             right: 20px;
             background: #002d62;
-            color: white;
+            color: #ffffff;
             padding: 8px 16px;
             border-radius: 50px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-            z-index: 10000;
+            gap: 10px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+            z-index: 100000;
             user-select: none;
         }
         .admin-bar.hidden {
@@ -171,24 +171,94 @@
         .admin-bar span {
             font-size: 0.85rem;
             font-weight: bold;
-            margin-right: 4px;
+            margin-right: 2px;
         }
         .admin-bar button {
-            color: white;
+            color: #ffffff;
             border: none;
-            padding: 7px 14px;
+            padding: 8px 16px;
             border-radius: 20px;
             font-weight: bold;
             cursor: pointer;
-            font-size: 0.8rem;
-            transition: background 0.2s;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
         }
-        .btn-toggle-edit { background: #28a745; }
-        .btn-toggle-edit.active { background: #dc3545; }
-        .btn-reset { background: #6c757d; }
-        .btn-hide { background: #17a2b8; }
+        .btn-toggle-edit { 
+            background: #28a745 !important; 
+        }
+        .btn-toggle-edit.active { 
+            background: #dc3545 !important; 
+        }
+        .btn-reset { 
+            background: #6c757d !important; 
+        }
+        .btn-hide { 
+            background: #17a2b8 !important; 
+        }
 
-        /* Secret restore trigger in corner */
+        /* Secret restore trigger in bottom right corner */
         .restore-trigger {
             position: fixed;
             bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 86, 179, 0.1);
+            z-index: 99999;
+            cursor: pointer;
+            border-radius: 8px 0 0 0;
+        }
+        .restore-trigger:hover {
+            background: rgba(0, 86, 179, 0.45);
+        }
+
+        /* Visual cue for editable items when edit mode is active */
+        body.edit-mode .editable {
+            outline: 2px dashed #007bff !important;
+            background-color: rgba(0, 123, 255, 0.08) !important;
+            cursor: text !important;
+        }
+        body.edit-mode .hero-edit-controls {
+            display: flex !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Discrete restore hotspot (Click to restore hidden toolbar) -->
+    <div class="restore-trigger" id="restoreTrigger" title="Click or Press Ctrl+Shift+E to restore toolbar" onclick="unhideToolbarUI()"></div>
+
+    <!-- Floating Live Editor Controls -->
+    <div class="admin-bar" id="adminBar">
+        <span id="editorStatus">Viewing</span>
+        <button id="toggleEditBtn" class="btn-toggle-edit" type="button" onclick="toggleEditModeUI()">Enable Editing</button>
+        <button id="resetDefaultsBtn" class="btn-reset" type="button" onclick="resetDefaultsUI()">Reset</button>
+        <button id="hideToolbarBtn" class="btn-hide" type="button" onclick="hideToolbarUI()" title="Shortcut: Ctrl+Shift+E">Hide Controls</button>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <h1 class="editable" data-key="header_h1">NEWAYGO BULK WATER COMPANY</h1>
+        <h2 class="editable" data-key="header_h2">SECURE HIGH-VOLUME ACCESS: WHITE CLOUD BULK FILL STATION</h2>
+        <p class="editable" data-key="header_sub">EXCLUSIVE PRE-LAUNCH RATES | EGLE APPROVED | PROFESSIONAL GRADE</p>
+    </header>
+
+    <!-- Hero Image Area -->
+    <section class="hero-section">
+        <img id="heroImg" src="bulk_water_pre-sale_flyer-tanker.png" alt="Tanker truck filling at 300+ GPM flow rate station" class="hero-image">
+        
+        <div class="hero-edit-controls" id="heroControls">
+            <input type="file" id="heroFileInput" accept="image/*" style="display:none;" onchange="handleHeroFileUpload(event)">
+            <button type="button" onclick="document.getElementById('heroFileInput').click()">Upload File</button>
+            <button type="button" onclick="promptHeroUrlInput()">Image URL</button>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <!-- Value Propositions Grid -->
+        <section class="grid-features">
+            <div class="feature-card">
+                <h3 class="editable" data-key="feat1_h3">Stop Waiting. Start Hauling.</h3>
+                <p class="editable" data-key="feat1_p1"><strong>Flow Rate:</strong> 300+ GPM</p>
+                <p class="editable" data-key="feat1_p2" style="margin-top: 10px;"><strong>Priority "Fast-Pass" Access:
