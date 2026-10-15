@@ -34,10 +34,8 @@
             margin-top: 15px;
         }
         .hero-section {
-            position: relative;
             text-align: center;
             background-color: #dee2e6;
-            min-height: 250px;
         }
         .hero-image { 
             width: 100%; 
@@ -45,27 +43,6 @@
             height: auto; 
             display: block; 
             margin: 0 auto;
-        }
-        .hero-controls {
-            display: none;
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 45, 98, 0.9);
-            padding: 10px 16px;
-            border-radius: 8px;
-            gap: 10px;
-            z-index: 1000;
-        }
-        .hero-controls button {
-            background: #ffc107;
-            border: none;
-            padding: 8px 14px;
-            font-weight: bold;
-            border-radius: 4px;
-            cursor: pointer;
-            color: #002d62;
         }
         .container { 
             max-width: 1000px; 
@@ -137,6 +114,23 @@
             margin-top: 0;
             color: #d9534f;
         }
+        .contact-cta {
+            text-align: center;
+            margin: 2.5rem 0 1rem;
+        }
+        .contact-cta a {
+            display: inline-block;
+            background-color: #0056b3;
+            color: #ffffff;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+        .contact-cta a:hover {
+            background-color: #004085;
+        }
         .footer { 
             text-align: center; 
             padding: 2rem; 
@@ -144,99 +138,20 @@
             font-weight: bold;
             color: #444; 
         }
-
-        /* Live Control Floating Toolbar */
-        #adminBar {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #002d62;
-            color: #ffffff;
-            padding: 10px 18px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.35);
-            z-index: 2147483647;
-            user-select: none;
-        }
-        #adminBar span {
-            font-size: 0.85rem;
-            font-weight: bold;
-            margin-right: 4px;
-        }
-        #adminBar button {
-            color: #ffffff;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: all 0.2s ease;
-        }
-        #btnToggleEdit { background: #28a745; }
-        #btnToggleEdit.active { background: #dc3545; }
-        #btnResetDefaults { background: #6c757d; }
-        #btnHideToolbar { background: #17a2b8; }
-
-        /* Discrete hotspot in bottom right corner to restore hidden controls */
-        #restoreTrigger {
-            position: fixed;
-            bottom: 0;
-            right: 0;
-            width: 40px;
-            height: 40px;
-            background: rgba(0, 86, 179, 0.15);
-            z-index: 2147483646;
-            cursor: pointer;
-            border-radius: 12px 0 0 0;
-        }
-        #restoreTrigger:hover {
-            background: rgba(0, 86, 179, 0.5);
-        }
-
-        /* Edit Mode Visual Cues */
-        body.edit-mode .editable {
-            outline: 2px dashed #007bff !important;
-            background-color: rgba(0, 123, 255, 0.08) !important;
-            cursor: text !important;
-        }
-        body.edit-mode .hero-controls {
-            display: flex !important;
-        }
     </style>
 </head>
 <body>
 
-    <!-- Discrete restore hotspot (Click to restore hidden controls) -->
-    <div id="restoreTrigger" title="Click or Press Ctrl+Shift+E to restore toolbar" onclick="unhideToolbarUI()"></div>
-
-    <!-- Floating Live Editor Controls -->
-    <div id="adminBar">
-        <span id="editorStatus">Viewing</span>
-        <button id="btnToggleEdit" type="button" onclick="toggleEditModeUI()">Enable Editing</button>
-        <button id="btnResetDefaults" type="button" onclick="resetDefaultsUI()">Reset</button>
-        <button id="btnHideToolbar" type="button" onclick="hideToolbarUI()" title="Shortcut: Ctrl+Shift+E">Hide Controls</button>
-    </div>
-
     <!-- Header -->
     <header class="header">
-        <h1 class="editable" data-key="header_h1">NEWAYGO BULK WATER COMPANY</h1>
-        <h2 class="editable" data-key="header_h2">SECURE HIGH-VOLUME ACCESS: WHITE CLOUD BULK FILL STATION</h2>
-        <p class="editable" data-key="header_sub">EXCLUSIVE PRE-LAUNCH RATES | EGLE APPROVED | PROFESSIONAL GRADE</p>
+        <h1>NEWAYGO BULK WATER COMPANY</h1>
+        <h2>SECURE HIGH-VOLUME ACCESS: WHITE CLOUD BULK FILL STATION</h2>
+        <p>EXCLUSIVE PRE-LAUNCH RATES | EGLE APPROVED | PROFESSIONAL GRADE</p>
     </header>
 
     <!-- Hero Image Area -->
     <section class="hero-section">
-        <img id="heroImg" src="bulk_water_pre-sale_flyer-tanker.png" alt="Tanker truck filling at 300+ GPM flow rate station" class="hero-image">
-        
-        <div class="hero-controls" id="heroControls">
-            <input type="file" id="heroFileInput" accept="image/*" style="display:none;" onchange="handleHeroFileUpload(event)">
-            <button type="button" onclick="document.getElementById('heroFileInput').click()">Upload File</button>
-            <button type="button" onclick="promptHeroUrlInput()">Image URL</button>
-        </div>
+        <img src="bulk_water_pre-sale_flyer-tanker.png" alt="Tanker truck filling at 300+ GPM flow rate station" class="hero-image">
     </section>
 
     <main class="container">
@@ -244,60 +159,60 @@
         <!-- Value Propositions Grid -->
         <section class="grid-features">
             <div class="feature-card">
-                <h3 class="editable" data-key="feat1_h3">Stop Waiting. Start Hauling.</h3>
-                <p class="editable" data-key="feat1_p1"><strong>Flow Rate:</strong> 300+ GPM</p>
-                <p class="editable" data-key="feat1_p2" style="margin-top: 10px;"><strong>Priority "Fast-Pass" Access:</strong> Dedicated PIN for peak season.</p>
+                <h3>Stop Waiting. Start Hauling.</h3>
+                <p><strong>Flow Rate:</strong> 300+ GPM</p>
+                <p style="margin-top: 10px;"><strong>Priority "Fast-Pass" Access:</strong> Dedicated PIN for peak season.</p>
             </div>
             
             <div class="feature-card">
                 <img src="stopwatch.png" alt="Stopwatch Icon">
-                <h3 class="editable" data-key="feat2_h3">CUT FILL TIMES BY 60%</h3>
-                <p class="editable" data-key="feat2_p1">8,000 gal in &lt; 25 mins.</p>
+                <h3>CUT FILL TIMES BY 60%</h3>
+                <p>8,000 gal in &lt; 25 mins.</p>
             </div>
             
             <div class="feature-card">
                 <img src="lock.png" alt="Lock Icon">
-                <h3 class="editable" data-key="feat3_h3">LOCK-IN DISCOUNTED RATE</h3>
-                <p class="editable" data-key="feat3_p1">Rates as low as $6.67/1000 gal.</p>
+                <h3>LOCK-IN DISCOUNTED RATE</h3>
+                <p>Rates as low as $16.67/1,000 gal.</p>
             </div>
             
             <div class="feature-card">
                 <img src="shield.png" alt="Shield Icon">
-                <h3 class="editable" data-key="feat4_h3">EGLE APPROVED & SCALABLE</h3>
-                <p class="editable" data-key="feat4_p1">880 million gal. annual capacity</p>
+                <h3>EGLE APPROVED & SCALABLE</h3>
+                <p>880 million gal. annual capacity</p>
             </div>
         </section>
 
         <!-- Pricing Table --> 
         <section class="pricing-section">
-            <h2 class="editable" data-key="pricing_heading">Exclusive Pre-Launch Tiered Pricing</h2>
+            <h2>Exclusive Pre-Launch Tiered Pricing</h2>
             <table class="pricing-table">
                 <thead>
                     <tr>
-                        <th class="editable" data-key="th_1">Tier</th>
-                        <th class="editable" data-key="th_2">Buy-In</th>
-                        <th class="editable" data-key="th_3">Volume</th>
-                        <th class="editable" data-key="th_4">Rate per 1k Gal</th>
+                        <th>Tier</th>
+                        <th>Buy-In</th>
+                        <th>Volume</th>
+                        <th>Rate per 1k Gal</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="editable" data-key="row1_c1"><strong>Commercial</strong></td>
-                        <td class="editable" data-key="row1_c2">$2,500</td>
-                        <td class="editable" data-key="row1_c3">100K Gal.</td>
-                        <td class="editable" data-key="row1_c4">$25.00</td>
+                        <td><strong>Commercial</strong></td>
+                        <td>$2,500</td>
+                        <td>100K Gal.</td>
+                        <td>$25.00</td>
                     </tr>
                     <tr>
-                        <td class="editable" data-key="row2_c1"><strong>Fleet</strong></td>
-                        <td class="editable" data-key="row2_c2">$10,000</td>
-                        <td class="editable" data-key="row2_c3">500K Gal.</td>
-                        <td class="editable" data-key="row2_c4">$20.00</td>
+                        <td><strong>Fleet</strong></td>
+                        <td>$10,000</td>
+                        <td>500K Gal.</td>
+                        <td>$20.00</td>
                     </tr>
                     <tr>
-                        <td class="editable" data-key="row3_c1"><strong>Anchor</strong></td>
-                        <td class="editable" data-key="row3_c2">$50,000</td>
-                        <td class="editable" data-key="row3_c3">3M Gal.</td>
-                        <td class="editable" data-key="row3_c4">$16.67</td>
+                        <td><strong>Anchor</strong></td>
+                        <td>$50,000</td>
+                        <td>3M Gal.</td>
+                        <td>$16.67</td>
                     </tr>
                 </tbody>
             </table>
@@ -305,188 +220,22 @@
 
         <!-- Guarantee -->
         <section class="guarantee">
-            <h2 class="editable" data-key="guarantee_h2">RISK-FREE GUARANTEE</h2>
-            <p class="editable" data-key="guarantee_p1"><strong>YOUR BUY-IN IS PROTECTED.</strong></p>
-            <p class="editable" data-key="guarantee_p2">FULL REFUND IF STATION IS NOT CERTIFIED AND OPERATIONAL BY April 1, 2027</p>
+            <h2>RISK-FREE GUARANTEE</h2>
+            <p><strong>YOUR BUY-IN IS PROTECTED.</strong></p>
+            <p>FULL REFUND IF STATION IS NOT CERTIFIED AND OPERATIONAL BY APRIL 1, 2027</p>
         </section>
+
+        <!-- Call to Action -->
+        <div class="contact-cta">
+            <a href="mailto:info@whitecloudwater.com?subject=Pre-Sale%20Charter%20Fleet%20Allocation">Request Charter Allocation</a>
+        </div>
 
         <!-- Footer -->
         <footer class="footer">
-            <p class="editable" data-key="footer_p">Centrally Located for Fast Access Across Newaygo, Kent, Mecosta, Muskegon, and Lake Counties</p>
+            <p>Centrally Located for Fast Access Across Newaygo, Kent, Mecosta, Muskegon, and Lake Counties</p>
         </footer>
 
     </main>
 
-    <script>
-        // Memory fallback to prevent security-policy or quota crashes
-        var memoryStorage = {};
-        var isEditingActive = false;
-
-        function storageSafeSet(key, val) {
-            try {
-                window.localStorage.setItem(key, val);
-            } catch (e) {
-                memoryStorage[key] = val;
-            }
-        }
-
-        function storageSafeGet(key) {
-            try {
-                var stored = window.localStorage.getItem(key);
-                if (stored !== null) return stored;
-            } catch (e) {}
-            return memoryStorage[key] !== undefined ? memoryStorage[key] : null;
-        }
-
-        function toggleEditModeUI() {
-            isEditingActive = !isEditingActive;
-            var btn = document.getElementById('btnToggleEdit');
-            var status = document.getElementById('editorStatus');
-            var editables = document.querySelectorAll('.editable');
-
-            if (isEditingActive) {
-                document.body.classList.add('edit-mode');
-                if (btn) {
-                    btn.textContent = 'Save Changes';
-                    btn.classList.add('active');
-                }
-                if (status) status.textContent = 'Editing';
-
-                for (var i = 0; i < editables.length; i++) {
-                    editables[i].setAttribute('contenteditable', 'true');
-                    editables[i].setAttribute('spellcheck', 'false');
-                }
-            } else {
-                for (var k = 0; k < editables.length; k++) {
-                    editables[k].setAttribute('contenteditable', 'false');
-                    var key = editables[k].getAttribute('data-key');
-                    if (key) {
-                        storageSafeSet('nbw_content_' + key, editables[k].innerHTML);
-                    }
-                }
-
-                document.body.classList.remove('edit-mode');
-                if (btn) {
-                    btn.textContent = 'Enable Editing';
-                    btn.classList.remove('active');
-                }
-                if (status) status.textContent = 'Viewing';
-            }
-        }
-
-        function hideToolbarUI() {
-            if (isEditingActive) {
-                toggleEditModeUI(); // auto-save before hiding
-            }
-            var bar = document.getElementById('adminBar');
-            if (bar) bar.style.display = 'none';
-            storageSafeSet('nbw_toolbar_hidden', 'true');
-        }
-
-        function unhideToolbarUI() {
-            var bar = document.getElementById('adminBar');
-            if (bar) bar.style.display = 'flex';
-            storageSafeSet('nbw_toolbar_hidden', 'false');
-        }
-
-        function resetDefaultsUI() {
-            if (confirm('Reset all edits and restore original template text and photo?')) {
-                try {
-                    for (var i = window.localStorage.length - 1; i >= 0; i--) {
-                        var k = window.localStorage.key(i);
-                        if (k && k.indexOf('nbw_') === 0) {
-                            window.localStorage.removeItem(k);
-                        }
-                    }
-                } catch (e) {}
-                memoryStorage = {};
-                window.location.reload();
-            }
-        }
-
-        // Auto-compress and scale images to prevent localStorage storage limit overflows
-        function handleHeroFileUpload(event) {
-            var file = event.target && event.target.files && event.target.files[0];
-            if (!file) return;
-
-            var reader = new FileReader();
-            reader.onload = function(evt) {
-                var img = new Image();
-                img.onload = function() {
-                    var canvas = document.createElement('canvas');
-                    var MAX_WIDTH = 1200;
-                    var scaleSize = MAX_WIDTH / img.width;
-                    if (scaleSize < 1) {
-                        canvas.width = MAX_WIDTH;
-                        canvas.height = img.height * scaleSize;
-                    } else {
-                        canvas.width = img.width;
-                        canvas.height = img.height;
-                    }
-                    var ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                    var compressedDataUrl = canvas.toDataURL('image/jpeg', 0.85);
-
-                    var hero = document.getElementById('heroImg');
-                    if (hero) hero.src = compressedDataUrl;
-                    storageSafeSet('nbw_hero_img', compressedDataUrl);
-                };
-                img.src = evt.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function promptHeroUrlInput() {
-            var url = prompt('Enter a valid image URL for the hero banner:');
-            if (url && url.trim().length > 0) {
-                var hero = document.getElementById('heroImg');
-                if (hero) hero.src = url.trim();
-                storageSafeSet('nbw_hero_img', url.trim());
-            }
-        }
-
-        function initializeSiteData() {
-            var editables = document.querySelectorAll('.editable');
-            for (var i = 0; i < editables.length; i++) {
-                var key = editables[i].getAttribute('data-key');
-                if (key) {
-                    var val = storageSafeGet('nbw_content_' + key);
-                    if (val !== null) {
-                        editables[i].innerHTML = val;
-                    }
-                }
-            }
-
-            var savedPhoto = storageSafeGet('nbw_hero_img');
-            if (savedPhoto) {
-                var img = document.getElementById('heroImg');
-                if (img) img.src = savedPhoto;
-            }
-
-            if (storageSafeGet('nbw_toolbar_hidden') === 'true') {
-                var bar = document.getElementById('adminBar');
-                if (bar) bar.style.display = 'none';
-            }
-        }
-
-        // Global hotkey: Ctrl + Shift + E or Cmd + Shift + E
-        window.addEventListener('keydown', function(e) {
-            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'e') {
-                e.preventDefault();
-                var bar = document.getElementById('adminBar');
-                if (bar && bar.style.display === 'none') {
-                    unhideToolbarUI();
-                } else {
-                    hideToolbarUI();
-                }
-            }
-        });
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initializeSiteData);
-        } else {
-            initializeSiteData();
-        }
-    </script>
 </body>
 </html>
