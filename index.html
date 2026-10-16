@@ -1,438 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- PRODUCTION (Live) -->
-  <script src="https://web.squarecdn.com/v1/square.js"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dream Water - Water Delivery Platform</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-    .custom-primary-bg { background-color: var(--primary-color, #0284c7); }
-    .custom-primary-text { color: var(--primary-color, #0284c7); }
-    .custom-primary-border { border-color: var(--primary-color, #0284c7); }
-    .custom-primary-ring:focus { --tw-ring-color: var(--primary-color, #0284c7); }
-    
-    /* Live Editable Outline Styling */
-    .edit-active [data-editable] {
-      outline: 2px dashed #f59e0b !important;
-      outline-offset: 3px;
-      cursor: text;
-      transition: all 0.2s ease;
-    }
-    .edit-active [data-editable]:hover {
-      background-color: rgba(245, 158, 11, 0.08);
-    }
-    .edit-active [data-editable]:focus {
-      outline: 2px solid #d97706 !important;
-      background-color: rgba(245, 158, 11, 0.15);
-    }
-    
-    /* Custom Scrollbars */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #f1f5f9;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #94a3b8;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newaygo Bulk Water Company - Pre-Sale</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #f8f9fa; 
+            color: #333; 
+        }
+        .header { 
+            background-color: #0056b3; 
+            color: white; 
+            text-align: center; 
+            padding: 2.5rem 1rem; 
+        }
+        .header h1 { 
+            margin: 0; 
+            font-size: 2.5rem; 
+            letter-spacing: 1px;
+        }
+        .header h2 { 
+            margin: 10px 0; 
+            font-size: 1.25rem; 
+            font-weight: 400; 
+        }
+        .header p { 
+            font-size: 0.9rem; 
+            letter-spacing: 1.5px; 
+            margin-top: 15px;
+        }
+        .hero-section {
+            text-align: center;
+            background-color: #dee2e6;
+        }
+        .hero-image { 
+            width: 100%; 
+            max-width: 800px; 
+            height: auto; 
+            display: block; 
+            margin: 0 auto;
+        }
+        .container { 
+            max-width: 1000px; 
+            margin: 2rem auto; 
+            padding: 0 1rem; 
+        }
+        .grid-features { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 1.5rem; 
+            text-align: center; 
+            margin: 2rem 0; 
+        }
+        .feature-card { 
+            background: white; 
+            padding: 1.5rem; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+            border-top: 4px solid #0056b3;
+        }
+        .feature-card img { 
+            max-width: 60px; 
+            margin-bottom: 1rem; 
+        }
+        .feature-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.1rem;
+        }
+        .feature-card p {
+            margin: 0;
+            color: #555;
+        }
+        .pricing-section { 
+            margin: 3rem 0;
+        }
+        .pricing-section h2 { 
+            text-align: center; 
+            color: #0056b3; 
+            text-transform: uppercase; 
+        }
+        .pricing-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            background: white; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+        }
+        .pricing-table th, .pricing-table td { 
+            padding: 1.25rem; 
+            text-align: center; 
+            border-bottom: 1px solid #ddd; 
+        }
+        .pricing-table th { 
+            background-color: #0056b3; 
+            color: white; 
+            text-transform: uppercase; 
+        }
+        .pricing-table tr:hover { 
+            background-color: #f1f1f1; 
+        }
+        .guarantee { 
+            background-color: #e9ecef; 
+            padding: 2rem; 
+            text-align: center; 
+            border-radius: 8px; 
+            border: 2px dashed #0056b3; 
+            margin-top: 2rem; 
+        }
+        .guarantee h2 {
+            margin-top: 0;
+            color: #d9534f;
+        }
+        .contact-cta {
+            text-align: center;
+            margin: 2.5rem 0 1rem;
+        }
+        .contact-cta a {
+            display: inline-block;
+            background-color: #0056b3;
+            color: #ffffff;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+        }
+        .contact-cta a:hover {
+            background-color: #004085;
+        }
+        .footer { 
+            text-align: center; 
+            padding: 2rem; 
+            font-size: 0.95rem; 
+            font-weight: bold;
+            color: #444; 
+        }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col" id="appBody">
+<body>
 
-  <!-- Admin / Business Owner Control Bar -->
-  <header id="owner-panel" style="display: none;" class="bg-slate-900 text-slate-200 px-4 py-2.5 text-xs border-b border-slate-800 sticky top-0 z-40 shadow-md">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
-      <div class="flex items-center gap-2">
-        <button id="btnOwnerControls" onclick="openConfigDrawer('brand')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow transition active:scale-95 cursor-pointer">
-          <span>⚙</span>
-          <span>Owner Controls</span>
-        </button>
-        <span class="hidden sm:inline text-slate-400">Manage site copy, products, pricing & credentials</span>
-      </div>
+    <!-- Header -->
+    <header class="header">
+        <h1>NEWAYGO BULK WATER COMPANY</h1>
+        <h2>SECURE HIGH-VOLUME ACCESS: WHITE CLOUD BULK FILL STATION</h2>
+        <p>EXCLUSIVE PRE-LAUNCH RATES | EGLE APPROVED | PROFESSIONAL GRADE</p>
+    </header>
 
-      <div class="flex items-center gap-2">
-        <label class="flex items-center gap-2 cursor-pointer bg-slate-800 hover:bg-slate-700/80 px-2.5 py-1 rounded-lg border border-slate-700 transition">
-          <input type="checkbox" id="toggleLiveEditMode" class="sr-only peer">
-          <div class="w-8 h-4 bg-slate-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-amber-500 relative"></div>
-          <span class="font-medium text-slate-200 select-none">Live Text Edit</span>
-        </label>
+    <!-- Hero Image Area -->
+    <section class="hero-section">
+        <img src="bulk_water_pre-sale_flyer-tanker.png" alt="Tanker truck filling at 300+ GPM flow rate station" class="hero-image">
+    </section>
 
-        <button id="btnOpenFullCustomizer" onclick="openConfigDrawer('brand')" class="flex items-center gap-1.5 px-3 py-1.5 bg-sky-600 hover:bg-sky-500 text-white font-semibold rounded-lg shadow transition active:scale-95 cursor-pointer">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
-          <span>Customize Business</span>
-        </button>
-
-        <button id="btnTogglePortalView" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg border border-slate-700 transition cursor-pointer">
-          Customer Portal Demo
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Live Edit Floating Notification Banner -->
-  <div id="liveEditBanner" class="hidden bg-amber-500 text-amber-950 px-4 py-1.5 text-xs font-semibold text-center sticky top-[41px] z-30 shadow flex items-center justify-center gap-3">
-    <span>✏️ Live Edit Active: Click on any outlined text on the website to reword it live!</span>
-    <button id="btnSaveTextChanges" class="px-2 py-0.5 bg-amber-900 text-white text-[11px] rounded hover:bg-black transition cursor-pointer">
-      Save All Changes
-    </button>
-  </div>
-
-  <!-- Primary Customer Navbar -->
-  <nav class="bg-white/95 backdrop-blur border-b border-slate-200 sticky top-0 z-20 transition-all">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <div class="flex items-center gap-3 cursor-pointer select-none" id="btnNavLogo" ondblclick="var p=document.getElementById('owner-panel'); if(p){ p.style.setProperty('display', p.style.display==='none'?'block':'none', 'important'); }">
-        <div id="brandLogoContainer" class="w-11 h-11 rounded-xl custom-primary-bg text-white flex items-center justify-center font-extrabold text-xl shadow-md overflow-hidden">
-          <span id="brandLogoFallback">💧</span>
-          <img id="brandLogoImg" src="" alt="Logo" class="w-full h-full object-cover hidden">
-        </div>
-        <div>
-          <div class="text-xl font-black tracking-tight text-slate-900 flex items-center gap-1.5 leading-none" id="brandDisplayName" data-editable="companyName">
-            Dream Water
-          </div>
-          <p class="text-[11px] italic font-medium text-slate-400 mt-0.5">
-            Subsidiary of White Cloud Spring Water
-          </p>
-          <p class="text-xs font-medium text-slate-500" id="brandTagline" data-editable="tagline">
-            Fresh Water Delivery Co.
-          </p>
-        </div>
-      </div>
-
-      <div class="flex items-center gap-4 sm:gap-6">
-        <div class="hidden md:flex flex-col text-right">
-          <span class="text-xs text-slate-500 font-medium">Need Assistance or Custom Commercial Quote?</span>
-          <a href="#" id="navPhoneLink" data-editable="supportPhone" class="text-sm font-bold text-slate-900 hover:text-sky-600 transition">
-            (555) 234-WATER
-          </a>
-        </div>
-        <button id="btnOpenLoginModal" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-700 hover:text-sky-600 hover:bg-slate-100 transition cursor-pointer flex items-center gap-1.5">
-          <span>👤</span>
-          <span id="navAuthLabel">Sign In</span>
-        </button>
-        <button id="btnStartOrderNav" class="px-4 py-2.5 rounded-xl custom-primary-bg text-white font-bold text-sm shadow hover:opacity-95 transition flex items-center gap-2 cursor-pointer">
-          <span>Set Up Delivery</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <main class="flex-1" id="mainContentArea">
-    
-    <!-- LANDING VIEW (HERO & HOW WATER DELIVERY WORKS) -->
-    <div id="landingViewSection">
-      <section class="relative bg-gradient-to-b from-sky-50 via-white to-slate-50 py-16 md:py-24 border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          
-          <!-- Top Eyebrow & Main Headings -->
-          <div class="max-w-3xl mx-auto mb-14 md:mb-20">
-            <span class="inline-block px-3 py-1 bg-sky-100 text-sky-800 text-xs font-black uppercase tracking-widest rounded-full mb-3">
-              Simple Pure Spring Water Service
-            </span>
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-              Enjoy the Convenience of <span class="text-sky-600">Dream Water</span> Delivery
-            </h1>
-            <p class="text-xs sm:text-sm italic font-semibold text-sky-700 mt-1.5">
-              Subsidiary of White Cloud Spring Water
-            </p>
-            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-700 mt-4 tracking-normal">
-              How Water Delivery Works
-            </h2>
-          </div>
-
-          <!-- 4-Step Process Flow Grid -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 relative">
-            
-            <!-- Step 1: Build Your Order -->
-            <div class="flex flex-col items-center text-center p-6 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
-              <div id="step-icon-1" class="w-24 h-24 mb-6 flex items-center justify-center text-sky-600 overflow-hidden">
-                <svg class="w-16 h-16 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l.45 3.15A2.25 2.25 0 0118.02 21H5.98a2.25 2.25 0 01-2.23-2.55l.45-3.15" />
-                </svg>
-              </div>
-              <span class="text-sky-600 font-black text-sm tracking-wider uppercase mb-1">1.</span>
-              <h3 class="text-lg font-black text-slate-900 mb-2">Build Your Order</h3>
-              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Select your bottle quantity (3–6 bottles) and recurring route cadence.
-              </p>
-            </div>
-
-            <!-- Step 2: Get It Delivered -->
-            <div class="flex flex-col items-center text-center p-6 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
-              <div id="step-icon-2" class="w-24 h-24 mb-6 flex items-center justify-center text-sky-600 overflow-hidden">
-                <svg class="w-16 h-16 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375A1.125 1.125 0 012.25 17.625V5.625A1.125 1.125 0 013.375 4.5h11.25c.621 0 1.125.504 1.125 1.125v12a1.125 1.125 0 01-1.125 1.125m-9 0h9m3 0a1.5 1.5 0 003 0m-3 0a1.5 1.5 0 01-3 0m3 0h1.875a1.125 1.125 0 001.125-1.125V12.75a2.25 2.25 0 00-.659-1.591l-3.21-3.21a2.25 2.25 0 00-1.591-.659H15.75v10.5h1.5" />
-                </svg>
-              </div>
-              <span class="text-sky-600 font-black text-sm tracking-wider uppercase mb-1">2.</span>
-              <h3 class="text-lg font-black text-slate-900 mb-2">Get It Delivered</h3>
-              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                We bring crisp spring water directly to your door on your scheduled neighborhood route.
-              </p>
-            </div>
-
-            <!-- Step 3: Put Out Empty Bottles -->
-            <div class="flex flex-col items-center text-center p-6 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
-              <div id="step-icon-3" class="w-24 h-24 mb-6 flex items-center justify-center text-sky-600 overflow-hidden">
-                <svg class="w-16 h-16 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-                </svg>
-              </div>
-              <span class="text-sky-600 font-black text-sm tracking-wider uppercase mb-1">3.</span>
-              <h3 class="text-lg font-black text-slate-900 mb-2">Put Out Empty Bottles</h3>
-              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Set your empty jugs outside on delivery day. We swap them for fresh, sanitized bottles automatically.
-              </p>
-            </div>
-
-            <!-- Step 4: Manage in the Portal -->
-            <div class="flex flex-col items-center text-center p-6 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
-              <div id="step-icon-4" class="w-24 h-24 mb-6 flex items-center justify-center text-sky-600 overflow-hidden">
-                <svg class="w-16 h-16 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="1.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-                </svg>
-              </div>
-              <span class="text-sky-600 font-black text-sm tracking-wider uppercase mb-1">4.</span>
-              <h3 class="text-lg font-black text-slate-900 mb-2">Manage in the Portal</h3>
-              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Log in anytime to pause service, track bottle deposits, or update your payment card.
-              </p>
-            </div>
-
-          </div>
-
-          <!-- Call to Action Buttons -->
-          <div class="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button id="btnOpenZipGateHero" class="w-full sm:w-auto px-8 py-4 bg-sky-600 hover:bg-sky-500 text-white font-black text-base rounded-2xl shadow-lg shadow-sky-600/20 hover:scale-[1.02] active:scale-[0.98] transition cursor-pointer">
-              Check Service in Your Area
-            </button>
-            <button id="btnOpenLoginHero" class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-slate-100 text-slate-800 font-bold text-base rounded-2xl border border-slate-200 transition cursor-pointer">
-              Existing Customer Sign In
-            </button>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- Value Props for Homes & Commercial Offices -->
-      <section class="py-16 bg-white border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center max-w-3xl mx-auto mb-12">
-            <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight" id="valuePropHeading" data-editable="valuePropHeading">
-              Tailored Hydration for Residential & Commercial Spaces
-            </h2>
-            <p class="text-slate-600 mt-2 text-sm sm:text-base" id="valuePropSubheading" data-editable="valuePropSubheading">
-              Whether you need 2 bottles a month for your kitchen or 20 bottles every week for a busy corporate breakroom, our automated route delivery keeps you supplied.
-            </p>
-          </div>
-
-          <div class="grid md:grid-cols-2 gap-8">
-            <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:shadow-lg transition">
-              <div class="w-12 h-12 rounded-2xl custom-primary-bg text-white flex items-center justify-center text-2xl mb-5 shadow">
-                🏡
-              </div>
-              <h3 class="text-xl font-extrabold text-slate-900 mb-2" id="resTitle" data-editable="resTitle">
-                Residential Home Delivery
-              </h3>
-              <p class="text-slate-600 text-sm leading-relaxed mb-4" id="resDesc" data-editable="resDesc">
-                Never carry heavy 40-pound water jugs from the supermarket again. We deliver right to your front porch, garage, or kitchen door.
-              </p>
-              <ul class="space-y-2 text-xs font-medium text-slate-700">
-                <li class="flex items-center gap-2">
-                  <span class="text-sky-600 font-bold">✓</span>
-                  <span id="resBullet1" data-editable="resBullet1">Front porch bottle swap — no need to be home</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-sky-600 font-bold">✓</span>
-                  <span id="resBullet2" data-editable="resBullet2">Flexible 2-week, 4-week, or monthly schedules</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-sky-600 font-bold">✓</span>
-                  <span id="resBullet3" data-editable="resBullet3">Self-service vacation hold in your online portal</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:shadow-lg transition">
-              <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-2xl mb-5 shadow">
-                🏢
-              </div>
-              <h3 class="text-xl font-extrabold text-slate-900 mb-2" id="commTitle" data-editable="commTitle">
-                Office & Commercial Delivery
-              </h3>
-              <p class="text-slate-600 text-sm leading-relaxed mb-4" id="commDesc" data-editable="commDesc">
-                Keep your team and clients refreshed with hot/cold dispensers, recurring route management, and consolidated invoicing.
-              </p>
-              <ul class="space-y-2 text-xs font-medium text-slate-700">
-                <li class="flex items-center gap-2">
-                  <span class="text-indigo-600 font-bold">✓</span>
-                  <span id="commBullet1" data-editable="commBullet1">Breakroom placement and empty jug pick-up</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-indigo-600 font-bold">✓</span>
-                  <span id="commBullet2" data-editable="commBullet2">Multi-cooler leased packages with free annual sanitization</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-indigo-600 font-bold">✓</span>
-                  <span id="commBullet3" data-editable="commBullet3">Automated receipt generation via Square Merchant integration</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Customer FAQ Section -->
-      <section class="py-16 bg-slate-50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6">
-          <div class="text-center mb-10">
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Frequently Asked Questions</h2>
-            <p class="text-slate-500 text-xs sm:text-sm mt-1">Everything you need to know about deposits, scheduling, and returns.</p>
-          </div>
-
-          <div class="space-y-3" id="faqAccordionContainer"></div>
-        </div>
-      </section>
-    </div>
-
-    <!-- ONBOARDING & SUBSCRIPTION BUILDER -->
-    <div id="onboardingSection" class="hidden py-8 sm:py-12">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <main class="container">
         
-        <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-200 mb-8 flex flex-wrap items-center justify-between gap-4">
-          <div class="flex items-center gap-3">
-            <button id="btnBackToZip" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-            </button>
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                  Route Active
-                </span>
-                <span id="activeServiceZipDisplay" class="font-extrabold text-slate-900 text-sm">Zip: 48322</span>
-              </div>
-              <h2 class="text-lg sm:text-xl font-black text-slate-900 mt-0.5">Customize Your Recurring Delivery Plan</h2>
+        <!-- Value Propositions Grid -->
+        <section class="grid-features">
+            <div class="feature-card">
+                <h3>Stop Waiting. Start Hauling.</h3>
+                <p><strong>Flow Rate:</strong> 300+ GPM</p>
+                <p style="margin-top: 10px;"><strong>Priority "Fast-Pass" Access:</strong> Dedicated PIN for peak season.</p>
             </div>
-          </div>
+            
+            <div class="feature-card">
+                <img src="stopwatch.png" alt="Stopwatch Icon">
+                <h3>CUT FILL TIMES BY 60%</h3>
+                <p>8,000 gal in &lt; 25 mins.</p>
+            </div>
+            
+            <div class="feature-card">
+                <img src="lock.png" alt="Lock Icon">
+                <h3>LOCK-IN DISCOUNTED RATE</h3>
+                <p>Rates as low as $12.50/1,000 gal.</p>
+            </div>
+            
+            <div class="feature-card">
+                <img src="shield.png" alt="Shield Icon">
+                <h3>EGLE APPROVED & SCALABLE</h3>
+                <p>880 million gal. annual capacity</p>
+            </div>
+        </section>
 
-          <div class="flex bg-slate-100 p-1 rounded-xl">
-            <button id="btnTypeResidential" class="px-4 py-1.5 rounded-lg text-xs font-extrabold transition bg-white shadow-sm text-slate-900 cursor-pointer">
-              🏡 Residential
-            </button>
-            <button id="btnTypeCommercial" class="px-4 py-1.5 rounded-lg text-xs font-extrabold transition text-slate-500 hover:text-slate-900 cursor-pointer">
-              🏢 Commercial
-            </button>
-          </div>
+        <!-- Pricing Table --> 
+        <section class="pricing-section">
+            <h2>Exclusive Pre-Launch Tiered Pricing</h2>
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>Tier</th>
+                        <th>Tier Rate</th>
+                        <th>Tier Volume</th>
+                        <th>Price Per 1000 Gal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Anchor</strong></td>
+                        <td>$50,000</td>
+                        <td>4,000,000 Gal.</td>
+                        <td>$12.50</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Commercial</strong></td>
+                        <td>$35,000</td>
+                        <td>2,000,000 Gal.</td>
+                        <td>$17.50</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Small Fleet</strong></td>
+                        <td>$20,000</td>
+                        <td>1,000,000 Gal.</td>
+                        <td>$20.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Guarantee -->
+        <section class="guarantee">
+            <h2>RISK-FREE GUARANTEE</h2>
+            <p><strong>YOUR BUY-IN IS PROTECTED.</strong></p>
+            <p>FULL REFUND IF STATION IS NOT CERTIFIED AND OPERATIONAL BY APRIL 1, 2027</p>
+        </section>
+
+        <!-- Call to Action -->
+        <div class="contact-cta">
+            <a href="mailto:presale@dreamwatercompany.com?subject=Pre-Sale%20Details%20Request">Request Pre-Sale Details</a>
         </div>
 
-        <div class="grid lg:grid-cols-12 gap-8 items-start">
-          <div class="lg:col-span-8 space-y-6">
-            
-            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
-              <div>
-                <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
-                  <span class="w-6 h-6 rounded-full custom-primary-bg text-white text-xs flex items-center justify-center font-bold">1</span>
-                  Select Water Varieties & Bottle Counts
-                </h3>
-                <p class="text-xs text-slate-500 mt-1" id="minBottleNoticeText">Minimum 4 bottles required for route delivery. Choose any mix.</p>
-              </div>
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Centrally Located for Fast Access Across Newaygo, Kent, Mecosta, Muskegon, and Lake Counties</p>
+        </footer>
 
-              <div id="onboardingProductsList" class="space-y-3"></div>
+    </main>
 
-              <div id="minBottleWarningBanner" class="hidden p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold flex items-center gap-2">
-                <span>⚠️</span>
-                <span id="minBottleWarningMsg">Minimum order for delivery is 4 bottles.</span>
-              </div>
-
-              <div id="coolerSectionWrapper" class="pt-6 border-t border-slate-100 space-y-4">
-                <div class="flex items-center justify-between">
-                  <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
-                    <span class="w-6 h-6 rounded-full bg-slate-800 text-white text-xs flex items-center justify-center font-bold">2</span>
-                    Water Dispenser Option
-                  </h3>
-                  <span class="text-xs text-sky-700 bg-sky-50 px-2 py-0.5 rounded font-semibold">Optional Rental</span>
-                </div>
-                
-                <div class="grid sm:grid-cols-3 gap-3" id="coolerRadiosContainer"></div>
-              </div>
-            </div>
-
-            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-4">
-              <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
-                <span class="w-6 h-6 rounded-full custom-primary-bg text-white text-xs flex items-center justify-center font-bold">3</span>
-                Choose Delivery Frequency
-              </h3>
-              <div class="grid sm:grid-cols-3 gap-3">
-                <label class="cursor-pointer">
-                  <input type="radio" name="deliveryCadence" value="Every 2 Weeks" class="peer sr-only" checked>
-                  <div class="p-4 rounded-2xl border-2 border-slate-200 peer-checked:border-sky-600 peer-checked:bg-sky-50/40 transition text-center">
-                    <div class="text-xs font-bold uppercase text-sky-700">Most Popular</div>
-                    <div class="font-extrabold text-slate-900 text-sm mt-1">Every 2 Weeks</div>
-                    <div class="text-[11px] text-slate-500 mt-1">Steady supply for active families & offices.</div>
-                  </div>
-                </label>
-
-                <label class="cursor-pointer">
-                  <input type="radio" name="deliveryCadence" value="Every 4 Weeks" class="peer sr-only">
-                  <div class="p-4 rounded-2xl border-2 border-slate-200 peer-checked:border-sky-600 peer-checked:bg-sky-50/40 transition text-center">
-                    <div class="text-xs font-bold uppercase text-slate-500">Standard</div>
-                    <div class="font-extrabold text-slate-900 text-sm mt-1">Every 4 Weeks</div>
-                    <div class="text-[11px] text-slate-500 mt-1">Monthly route replenishment.</div>
-                  </div>
-                </label>
-
-                <label class="cursor-pointer">
-                  <input type="radio" name="deliveryCadence" value="On-Demand / As Needed" class="peer sr-only">
-                  <div class="p-4 rounded-2xl border-2 border-slate-200 peer-checked:border-sky-600 peer-checked:bg-sky-50/40 transition text-center">
-                    <div class="text-xs font-bold uppercase text-slate-500">Flex</div>
-                    <div class="font-extrabold text-slate-900 text-sm mt-1">Will-Call / Flex</div>
-                    <div class="text-[11px] text-slate-500 mt-1">Order refills when your bottles are empty.</div>
-                  </div>
-                </label>
-              </div>
-            </div>
-
-            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-4">
-              <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
-                <span class="w-6 h-6 rounded-full custom-primary-bg text-white text-xs flex items-center justify-center font-bold">4</span>
-                Delivery Location & Contact Info
-              </h3>
-              
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Full Name *</label>
-                  <input type="text" id="custFullName" placeholder="Jane Doe" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-medium focus:ring-2 focus:ring-sky-500 focus:outline-none">
-                </div>
-                <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Phone Number (for Route SMS) *</label>
-                  <input type="tel" id="custPhone" placeholder="(555) 000-0000" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-medium focus:ring-2 focus:ring-sky-500 focus:outline-none">
-                </div>
-                <div class="sm:col-span-2">
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Email Address (for Receipts & Portal) *</label>
-                  <input type="email" id="custEmail" placeholder="jane@example.com" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-medium focus:ring-2 focus:ring-sky-500 focus:outline-none">
-                </div>
-                
-                <div id="commercialCompanyNameField" class="sm:col-span-2 hidden">
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Company / Organization Name *</label>
-                  <input type="text" id="custCompanyName" placeholder="Acme Logistics LLC" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-medium focus:ring-2 focus:ring-sky-500 focus:outline-none">
-                </div>
-
-                <div class="sm:col-span-2">
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Street Address *</label>
-                  <input type="text" id="custStreet" placeholder="1234 Meadow Lane" class="w
+</body>
+</html>
